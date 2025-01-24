@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta
+    name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Style Sheet -->
+    <link rel="stylesheet" href="style.css">
+    <!-- the 'CSS/' just specifies the file directory -->
+
+    <title>Log In: Practice Form</title>
+
+    <!-- the tag in place of a div tag for document structure was the fieldset tag -->
+    <!-- the legend goes with the fieldset in order to name it -->
+    <!-- I tried to stay away from the div tags, but i did not know how else to space the input and their labels. I tried using padding and margins on the individual tags, but div tags seemed to work better -->
+</head>
+<body>
+    <h1>Practice Form</h1>
+    <form>
+        <!-- Notes -->
+        <!-- The required property, ensures all fields are filled before submission -->
+        <!-- The patterns, althought a bit advanced, have use, specified beneath each input -->
+
+        <fieldset>
+            <legend>Log In</legend>
+
+            <div>
+                <label for="first_name">First Name: </label> <br>
+                    <input
+                    type="text"
+                    name="first_name"
+                    id="first_name"
+                    placeholder="John"
+                    minlength="2"
+                    required>
+                    <br>
+
+                    <!-- 'minlength="2"', ensures no one enters one letter as a name -->
+            </div>
+
+            <div>
+                <label for="last_name">Last Name: </label> <br>
+                    <input
+                    type="text"
+                    name="last_name"
+                    id="last_name"
+                    placeholder="Doe"
+                    minlength="2"
+                    required>
+                    <br>
+
+                    <!-- 'minlength="2"', ensures no one enters one letter as a name -->
+            </div>
+            <div>
+                <label for="email">Email Address: </label> <br>
+                    <input
+                    type="email"
+                    name="email"
+                    id="email"
+                    placeholder="john.doe@student.moringaschool.com"
+                    pattern="^[a-z]+\.[a-z]+@student\.moringaschool\.com$"
+                    required>
+                    <br>
+
+                    <!-- the pattern in detail, got it from https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/pattern -->
+
+                    <!-- uses something called Regex, which in simple terms is a simple language that is used to find patterns in text. This helps, in my case, with client side form validation. -->
+
+                    <!-- '^' this makes sure that the pattern starts at the beginning of the string -->
+
+                    <!-- '[a-z]+' this makes sure that any combination of lower case letters is allowed but anything else will be considered an error. This just endures there no errors in the system when information is received, as false information will not even be considered for submission -->
+
+                    <!-- '@student\.moringaschool\.com' has it's own explanation.
+                        1) it matches the domain,
+                        2) the backslashes (\) before the periods ensure that literal periods are written, not any random character. This is because in regex a period (.) represents any character
+                            a) the slash come before characters to ensure that they are treated literally -->
+
+                    <!-- '$' ensures the string ends after '.com'-->
+            </div>
+            <div>
+                <label for="phone_number">Phone Number: </label> <br>
+                    <input
+                    type="tel"
+                    name="phone_number"
+                    id="phone_number"
+                    placeholder="+254..."
+                    pattern="^\+2547[0-9]{8}$"
+                    required>
+
+                    <br>
+
+                    <!-- the pattern for a typical kenyan number with the code -->
+
+                    <!-- '\+2547'
+                        1) the backslash (\) treats the (+) literal
+                        2) '+254' ensures that the code matches the kenyan country code
+                        3) '7' ensures the string starts with 7 -->
+
+                    <!-- '[0-9]' ensures that the digits following 7, are anywhere between 0 and 9 -->
+
+                    <!-- '{8}' ensures that exaxtly 8 digits follow 7 -->
+
+                    <!-- '$' ensures that at the end of the 10 digits, nothing more is alloed -->
+            </div>
+            <div>
+                <label for="password">Password: </label> <br>
+                    <input
+                    type="password"
+                    name="password"
+                    id="password"
+                    placeholder="Enter a strong password"
+                    pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"
+                    required>
+                    <br>
+
+                    <!-- this pattern ensures that the password has at leasy 8 characters, one uppercase letter, one lowercase letter, one digit, and one special character -->
+            </div>
+            <button type="submit">Log in</button>
+        </fieldset>
+    </form>
+
+    <h2>Inspiration</h2>
+    <img src="https://www.tutorjoes.in/membership/output/09_google.jpg" alt="Screenshot of a Google sign-in page" title="Screenshot of a Google sign-in page">
+
+    <!-- I used a title tag to show the image description when he image is hovered over -->
+
+</body>
+</html>
